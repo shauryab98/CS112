@@ -2,7 +2,7 @@
 	Name: Shaurya Gupta
 	Roll No: 1601cs43
 	Date: 24/01/2017
-	Objective: takes number of months and then returns 
+	Objective: takes number of months and then returns number of ways of building ships.
 */
 
 #include <stdio.h>
