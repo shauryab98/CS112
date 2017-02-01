@@ -1,1 +1,1 @@
-My solutions to assignments of __CS112: Programming and Data Structure Labs__
+My solutions for assignments of the course __CS112: Programming and Data Structure Labs__ at IIT Patna.
