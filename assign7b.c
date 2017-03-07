@@ -1,7 +1,7 @@
 /*
 	Name: Shaurya Gupta
 	Roll No: 1601CS43
-	Date: 7/03/207
+	Date: 7/03/2017
 	Objective: Takes strings and stores them in dynamically allocated array, then sorts and prints it back out.
 */
 #include <stdio.h>
@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 // comparator function for qsort
-int compare (const void*, const void*);
+int compFunc (const void*, const void*);
 
 int main(v0id) {
 	char buffer[35]; // buffer to store names
@@ -24,7 +24,7 @@ int main(v0id) {
 		strcpy(names[i], buffer);
 	}
 	// sort the names
-	qsort(names, numNames, sizeof(char*), compare);
+	qsort(names, numNames, sizeof(char*), compFunc);
 	// print each name
 	for(i = 0; i < numNames; i++)
 		printf("%s\n", names[i]);
@@ -36,6 +36,6 @@ int main(v0id) {
 	return 0;	
 }
 
-int compare (const void *a, const void *b) {
+int compFunc (const void *a, const void *b) {
 	return (strcmp(*(char**)a, *(char**)b));
 }
