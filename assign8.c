@@ -84,15 +84,18 @@ void swap(node* prev1, node* prev2) {
 }
 // given the size of linkedlist and the starting node, this reverse the linkedlist.
 void reverse(int size) {
-	int i = 0,j; // loop variable
-	node* n1 = head; // pointer to first node
-	node* p1 = NULL;
-	node* n2;// pointer to second node;
-	node* p2 = NULL;
+	int i,j,k; // loop variable
 	for(i = 0; i < size/2; i++) {
-		n2 = n1; // start from n2 = n1;
-		p2 = p1;
-		j = i;
+		node* n1 = head; // pointer to first node
+		node* p1 = NULL;
+		node* n2 = head;// pointer to second node;
+		node* p2 = NULL;
+		j = 0; k = 0;
+		while (k != i) {
+			k++;
+			p1 = n1;
+			n1 = n1->next;
+		}
 		// use the invariant that for reverse, i is moved to size - i - 1
 		while (j != size - i - 1) {
 			j++;
@@ -101,8 +104,6 @@ void reverse(int size) {
 		}
 		// once we have found node previous to the jth node correponding to ith node, swap.
 		swap(p1,p2);
-		p1 = n1;
-		n1 = n1->next;
 	} 
 }
 
