@@ -24,6 +24,7 @@ int abs(int a) {
 }
 // gets a big integer and forms the linked list
 node* getint() {
+    printf("Enter number: ");
     char buff[1000], num[5]; // buffer
     scanf("%s%*c", buff); // get input
     int parts = 0, i, len = strlen(buff), j; // loop variables and length
@@ -118,7 +119,6 @@ node* subt(node* num1, node* num2) {
 node* add(node* num1, node* num2) {
     node* r1 = num1->next, *r2 = num2->next;
     node* num3 = (node*) malloc(sizeof(node)), *end = num3;
-    int times = min(abs(num1->data), abs(num2->data));
     int i,a1,a2;    
     int leftOver = 0, parts = 0;
     do {
