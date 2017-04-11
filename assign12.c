@@ -13,7 +13,7 @@ typedef struct node {
 } node;
 typedef node* nodeptr;
 // function to form tree given inorder and postorder as well as the indices of inorder that indicate subtree
-nodeptr tree(int start, int end, int nodes, char* inorder, char *postorder) {
+nodeptr tree(int start, int end, int nodes, char* inorder, char *postorder, FILE* out) {
     // empty subtree
     nodeptr root = (nodeptr)(malloc(sizeof(node)));
     if(start > end) {
@@ -34,13 +34,13 @@ nodeptr tree(int start, int end, int nodes, char* inorder, char *postorder) {
     }
     // case when input is invalid tree
     if(!highestIndex) {
-        printf("Tree cannot be formed\n");
+        fprintf(out, "Tree cannot be formed\n");
         exit(0);    
     }
     // insert data into node and get left and right subtree
     root -> data = inorder[splitAt];
-    root -> left = tree(start, splitAt - 1, nodes, inorder, postorder);
-    root -> right = tree(splitAt + 1, end, nodes, inorder, postorder);
+    root -> left = tree(start, splitAt - 1, nodes, inorder, postorder, out);
+    root -> right = tree(splitAt + 1, end, nodes, inorder, postorder, out);
     return root;
 }
 void preorder(nodeptr head, FILE* out) {
@@ -86,7 +86,8 @@ int main(void) {
         return 0;
     }
     // get preorder
-    nodeptr head = tree(1, nodes, nodes, inorder, postorder);
+    nodeptr head = tree(1, nodes, nodes, inorder, postorder, output);
+    fprintf(output, "The preorder sequence is: ");
     preorder(head, output);
     fprintf(output, "\n");
     // close files
